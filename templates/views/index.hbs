@@ -1,0 +1,24 @@
+{{!< default}}
+<div class="Hero-video">
+  {{> home-page-video-carousel-partial videos=homePageVideos}}
+</div>
+
+{{#grouped_each 2 photoGalleries}}
+  <div class="Gallery">
+    {{#each this}}
+      <div class="Gallery-item">
+        <div class="content">
+            <a class="Gallery-link js-link" data-slug="{{slug}}">
+              <h1 class="Gallery-name">{{title}}</h1>
+              <img
+                  class="Gallery-image img-responsive center-block"
+                  src="{{cloudinaryUrl featuredImage width='600' height='400' fetch_format='auto' quality='90'}}"
+              />
+          </a>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+{{/grouped_each}}
+
+{{> photo-swipe-gallery}}

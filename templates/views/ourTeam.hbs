@@ -1,0 +1,43 @@
+<div class="container">
+  <header class="VideoGallery-header" style="text-align: center">
+    <h1 class="Page-title">{{page.title}}</h1>
+    <p class="VideoGallery-description lead">{{page.description}}</p>
+  </header>
+</div>
+<div class="container">
+  <ul class="TeamMember">
+    {{#each page.teamMembers}}
+      <li class="TeamMember-row">
+        {{#if headshot.public_id}}
+          <img
+            class="TeamMember-headshot"
+            src="{{cloudinaryUrl headshot width='200' height='200' crop='fill' gravity='face' fetch_format='auto' quality='80'}}"
+            alt="Photo of {{name.full}}"
+          />
+        {{/if}}
+        <div class="TeamMember-info">
+          <h2 class="TeamMember-name">{{name.full}}</h2>
+          <p class="TeamMember-bio">{{biography}}</p>
+          {{#if featuredPhotos}}
+            <ul class="list-inline list-unstyled">
+              {{#each featuredPhotos}}
+                <li>
+                    <img
+                      class="img-responsive"
+                      src="{{cloudinaryUrl width='120' height='120' crop='fill' gravity='center' fetch_format='auto' quality='80'}}"
+                      alt="Featured Photo"
+                    />
+                </li>
+              {{/each}}
+            </ul>
+          {{/if}}
+          {{#if featuredVideo}}
+            <a class="VideoGallery-link" href="{{featuredVideo}}" target="_blank" title="{{title}}">
+              <img class="img-responsive block-center" src="{{embedly.thumbnailUrl}}" alt="Featured video for {{name.full}}" />
+            </a>
+          {{/if}}
+        </div>
+      </li>
+    {{/each}}
+  </ul>
+</div>

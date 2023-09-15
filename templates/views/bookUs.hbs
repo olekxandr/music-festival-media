@@ -1,0 +1,47 @@
+<div class="container">
+  <header class="VideoGallery-header">
+    <h1 class="Page-title">{{page.title}}</h1>
+    <p class="VideoGallery-description lead">{{page.description}}</p>
+    <div class="VideoGallery-cta text-center">
+      <a href="/contact" class="btn btn-lg btn-brand">Book Us</a>
+    </div>
+  </header>
+</div>
+<div class="container">
+  <h1 class="Page-title" style="margin-bottom: 30px;">Featured Photos</h1>
+  {{#grouped_each 2 page.featuredImages}}
+    <div class="Gallery">
+      {{#each this}}
+        <div class="Gallery-item">
+          <div class="content">
+            <a class="Gallery-link js-link" data-slug="{{slug}}">
+              <img
+                  class="Gallery-image img-responsive center-block"
+                  src="{{cloudinaryUrl width='600' height='400' crop='fill' gravity='center' fetch_format='auto' quality='80'}}" alt="Featured image for {{page.title}}"
+              />
+            </a>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  {{/grouped_each}}
+  <div class="VideoGallery-cta text-center">
+    <a href="/contact" class="btn btn-lg btn-brand">Book Us</a>
+  </div>
+  <h1 class="Page-title" style="margin-bottom: 20px; margin-top: 60px;">Featured Videos</h1>
+  <ul class="VideoGallery list-unstyled">
+    {{#each page.featuredVideoLinks}}
+      <li class="VideoGallery-item">
+        <a class="VideoGallery-link" href="{{url}}" target="_blank" title="{{title}}">
+          {{#if featuredImage.public_id}}
+              <img class="img-responsive block-center" src="{{cloudinaryUrl featuredImage width='370' height='208' fetch_format='auto'}}" alt="Featured image for {{page.title}}" />
+          {{else}}
+              <img class="img-responsive block-center" src="{{embedly.thumbnailUrl}}" alt="Featured image for {{page.title}}" />
+          {{/if}}
+          <h1 class="Page-title">{{embedly.title}}</h1>
+        </a>
+        <p class="VideoGallery-description lead">{{embedly.description}}</p>
+      </li>
+    {{/each}}
+  </ul>
+</div>

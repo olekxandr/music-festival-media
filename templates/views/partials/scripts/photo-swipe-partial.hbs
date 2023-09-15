@@ -1,0 +1,39 @@
+<script>
+
+    function openPhotoSwipe (images) {
+      var pswpElement = document.querySelectorAll('.pswp')[0];
+
+      var items = images.map(function (image) {
+        return {
+          src: image.url,
+          w: image.width,
+          h: image.height,
+        }
+      })
+
+      // define options (if needed)
+      var options = {
+  			 // history & focus options are disabled on CodePen
+        	history: true,
+        	focus: true,
+
+          showAnimationDuration: 0,
+          hideAnimationDuration: 0
+
+      };
+
+      var gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);
+      gallery.init();
+    }
+
+    $(document).ready(function () {
+      var $btn = $('.js-link');
+      $btn.on('click', function () {
+        var $slug = $(this).attr('data-slug');
+        $.get('/api/photos/' + $slug)
+          .then(function (photos) {
+              openPhotoSwipe(photos.images)
+          })
+      })
+    })
+</script>

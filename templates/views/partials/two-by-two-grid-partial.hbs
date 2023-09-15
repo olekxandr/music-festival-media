@@ -1,0 +1,11 @@
+{{#grouped_each 2 type}}
+  <div class="row">
+    {{#each this}}
+      <div class="col-sm-6">
+        <img
+          src="{{cloudinaryUrl featuredImage width='600' height='400' fetch_format='auto' quality='90'}}"
+        />
+      </div>
+    {{/each}}
+  </div>
+{{/grouped_each}}

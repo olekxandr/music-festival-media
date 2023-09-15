@@ -1,0 +1,20 @@
+{{!< default}}
+<div class="container">
+  <header class="VideoGallery-header">
+    <h1 class="Page-title">{{pageTitle}}</h1>
+  </header>
+</div>
+
+<ul class="VideoGallery list-unstyled">
+  {{#each galleries}}
+    <li class="VideoGallery-item">
+      <a class="VideoGallery-link" href="{{url}}" target="_blank" title="{{title}}">
+        <img class="img-responsive block-center" src="{{embedly.thumbnailUrl}}" alt="Featured image for {{page.title}}" />
+        <h1 class="Page-title">{{embedly.title}}</h1>
+      </a>
+      <p class="VideoGallery-description lead">{{embedly.description}}</p>
+    </li>
+  {{/each}}
+</ul>
+
+{{> photo-swipe-gallery}}

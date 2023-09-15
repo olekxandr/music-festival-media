@@ -1,0 +1,22 @@
+<div id="hero-carousel" class="carousel-container carousel slide" data-ride="carousel" data-interval="20000">
+  <ol class="carousel-indicators">
+      {{#each videos}}
+        <li
+          data-target="#hero-carousel"
+          data-slide-to="{{@index}}"
+          class="{{#if @first}}active{{/if}}">
+        </li>
+      {{/each}}
+  </ol>
+  <div class="carousel-inner" role="listbox">
+      {{#each videos}}
+        <div class="item item-bg {{#if @first}}active{{/if}}">
+          <div style="margin: 0 auto">
+            <div class='embed-container'>
+            {{{embedly.html}}}
+            </div>
+          </div>
+        </div>
+      {{/each}}
+  </div>
+</div>
